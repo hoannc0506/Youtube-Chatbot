@@ -23,7 +23,7 @@ def dowload_youtube_video(url, save_dir="data/videos"):
     return saved_path
 
 
-def time_based_split(video_path, time_step=10, output_dir='data/scenes'):
+def split_video(video_path, time_step=5, output_dir='data/scenes'):
     # Open the video file
     cap = cv2.VideoCapture(video_path)
 
@@ -42,6 +42,11 @@ def time_based_split(video_path, time_step=10, output_dir='data/scenes'):
     
     os.makedirs(scenes_dir, exist_ok=True)
     os.makedirs(metada_dir, exist_ok=True)
+
+    metadata_path = f'{metada_dir}/{video_name}_ts{time_step}.json'
+    
+    if os.path.isfile(metadata_path):
+        return metadata_path
     
     while cap.isOpened():
         ret, frame = cap.read()
@@ -68,7 +73,6 @@ def time_based_split(video_path, time_step=10, output_dir='data/scenes'):
     # Release the video capture object
     cap.release()
 
-    metadata_path = f'{metada_dir}/{video_name}_ts{time_step}.json'
     with open(metadata_path, 'w') as f:
         f.write(json.dumps(metadata))
         

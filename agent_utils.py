@@ -13,7 +13,7 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings
 from llama_index.core.agent import ReActAgent
 import tiktoken
-import query_utils
+import index_utils, query_utils
 
 def set_logging_handlers(
     model_name="gpt-4o-mini"
@@ -72,7 +72,7 @@ def sample_chatbot():
         if text_input == "exit":
             break
         response = agent.chat(text_input)
-        print(f"Agent: {response}")
+        print(f"Response\n: {response}")
 
 
 def test_agent(debugging=False):

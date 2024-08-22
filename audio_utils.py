@@ -7,7 +7,9 @@ import json
 def video_to_audio(video_path, save_dir="data/audios"):
     os.makedirs(save_dir, exist_ok=True)
     video_name = video_path.split("/")[-1].split(".")[0]
-
+    saved_path = f"{save_dir}/{video_name}.mp3"
+    if os.path.isfile(saved_path):
+        return saved_path
     
     # Load the video file
     video = VideoFileClip(video_path)
@@ -16,17 +18,25 @@ def video_to_audio(video_path, save_dir="data/audios"):
     audio = video.audio
     
     # Save the audio to a file (in mp3 format)
-    audio.write_audiofile(f"{save_dir}/{video_name}.mp3")
+    audio.write_audiofile(saved_path)
     
     # Clean up resources
     video.close()
 
+    return saved_path
+
     
 def audio_to_transciption(audio_path, save_dir="./data/audio_transcripts/"):
+    file_name = audio_path.split("/")[-1].split(".")[0]
+    save_path = f"{save_dir}/{file_name}.json"
+    if os.path.isfile(save_path):
+        return save_path
+        
     client = OpenAI()
     print("Generating transcription")
-    audio_file = open(audio_path, "rb")
 
+    audio_file = open(audio_path, "rb")
+    
     t_start = time.time()
     transcript = client.audio.transcriptions.create(
         file=audio_file,
@@ -35,9 +45,9 @@ def audio_to_transciption(audio_path, save_dir="./data/audio_transcripts/"):
         timestamp_granularities=["segment"]
     )
 
-    file_name = audio_path.split("/")[-1].split(".")[0]
+    
     os.makedirs(save_dir, exist_ok=True)
-    save_path = f"{save_dir}/{file_name}.json"
+    
     with open(save_path, 'w') as f:
         f.write(json.dumps(transcript.to_dict(), indent=2))
 
