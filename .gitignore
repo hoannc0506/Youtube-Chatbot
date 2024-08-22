@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+__pycache__/
+backup/
+data/
+models
+qdrant_db/
+chroma_db/
+notebooks/
+test_scripts/
