@@ -1,8 +1,8 @@
 import logging
 import sys
-logging.basicConfig(stream=sys.stdout, level=logging.WARNING)
-import nest_asyncio
-nest_asyncio.apply()
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+# import nest_asyncio
+# nest_asyncio.apply()
 
 import llama_index.core
 from llama_index.core.callbacks import (
@@ -23,7 +23,7 @@ def set_logging_handlers(
         tokenizer=tiktoken.encoding_for_model(model_name).encode,
         verbose=True
     )
-    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+    # logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     llama_index.core.set_global_handler("simple")
     llama_debug = LlamaDebugHandler(print_trace_on_end=True)
     Settings.callback_manager = CallbackManager([token_counter, llama_debug])    
@@ -35,6 +35,7 @@ def get_agent(
     video_descriptions_path="./data/desciptions/in_10_minutes_this_room_will_explode_ts5.json",
     verbose=False
 ):
+    
     # Load models and setup callback handler
     Settings.llm = OpenAI(model="gpt-4o-mini")
     Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")

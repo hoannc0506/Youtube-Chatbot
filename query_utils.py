@@ -1,8 +1,8 @@
 import logging
 import sys
 import json
-import nest_asyncio
-nest_asyncio.apply()
+# import nest_asyncio
+# nest_asyncio.apply()
 # logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 from llama_index.core import (

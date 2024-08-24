@@ -6,8 +6,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 # llama index ascyncio config
-import nest_asyncio
-nest_asyncio.apply()
+# import nest_asyncio
+# nest_asyncio.apply()
 
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
@@ -51,7 +51,6 @@ def get_transcipt_index(
     )
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-    print('reindexing', reindexing)
     if coll_name in coll_names and not reindexing:
         print("Loading index from vector store")
         vector_index = VectorStoreIndex.from_vector_store(

@@ -14,22 +14,28 @@ def video_chatbot(
         video_path = video_path_or_url
 
     # scene processing
+    print('Spliting video to scenes')
     scene_data_path = video_utils.split_video(video_path)
 
     # audio processing
+    print('Convert video audio to transcipts')
     audio_path = audio_utils.video_to_audio(video_path)
     transcript_data_path = audio_utils.audio_to_transciption(audio_path)
 
     # init agent
-    agent = agent_utils.get_agent(transcript_data_path, scene_data_path)
+    print("initializing chatbot")
+    chatbot = agent_utils.get_agent(transcript_data_path, scene_data_path)
 
-    # start chat
+    return chatbot
+
+if __name__ == "__main__":
+    chatbot =  video_chatbot()
+    
     while True:
         text_input = input("User: ")
         if text_input == "exit":
             break
-        response = agent.chat(text_input)
+        response = chatbot.chat(text_input)
         print(f"Response\n: {response}")
-
-if __name__ == "__main__":
-    video_chatbot()
+    
+    
