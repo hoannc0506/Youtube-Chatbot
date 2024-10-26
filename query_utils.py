@@ -81,7 +81,7 @@ def get_tools(transcript_index, scene_index):
     scene_summary_engine = RetrieverQueryEngine(
         retriever=scene_retriever,
         response_synthesizer=summary_synthesizer,
-        node_postprocessors=[rerank_postprocessor],
+        # node_postprocessors=[rerank_postprocessor],
     )
 
     # return query engine only

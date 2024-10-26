@@ -14,11 +14,11 @@ def video_chatbot(
         video_path = video_path_or_url
 
     # scene processing
-    print('Spliting video to scenes')
+    print("Processing video's scenes")
     scene_data_path = video_utils.split_video(video_path)
 
     # audio processing
-    print('Convert video audio to transcipts')
+    print("Processing video's audio")
     audio_path = audio_utils.video_to_audio(video_path)
     transcript_data_path = audio_utils.audio_to_transciption(audio_path)
 

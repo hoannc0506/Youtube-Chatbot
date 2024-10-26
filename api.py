@@ -10,15 +10,8 @@ class ChatRequest(BaseModel):
 
 
 app = FastAPI()
-
 agent = agent_utils.get_agent()
 
-@app.post("/chat")
-def chat(request: ChatRequest):
-    return {"message": f"received {request.query}"}
-
-app = FastAPI()
-# agent = get_agent()
 
 @app.get("/")
 async def root():
@@ -31,5 +24,6 @@ def chat(request: ChatRequest):
     
     return {"message": response.response}
 
-# if __name__ == "__main__":
-    
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=9005)
