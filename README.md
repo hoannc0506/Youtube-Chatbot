@@ -1,2 +1,2 @@
-# Video Anal chatbot
+# Video Analyst chatbot
 
