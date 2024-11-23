@@ -7,3 +7,4 @@ qdrant_db/
 chroma_db/
 notebooks/
 test_scripts/
+oryx-build-commands.txt

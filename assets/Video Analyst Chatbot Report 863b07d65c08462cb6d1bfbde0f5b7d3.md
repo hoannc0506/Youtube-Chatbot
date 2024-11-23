@@ -1,9 +1,8 @@
-# Video Analyst chatbot
-
+# Video Analyst Chatbot Report
 
 ### 1. Proposed pipeline
 
-![image.png](assets/image.png)
+![image.png](image.png)
 
 ### 2. Results
 
@@ -11,31 +10,31 @@
 
 **Sample scene description:**
 
-![image.png](assets/image_1.png)
+![image.png](image%201.png)
 
 **Sample audio transcript:**
 
-![image.png](assets/image_2.png)
+![image.png](image%202.png)
 
 **Retrieval with metadata (t_start, t_end of an event):**
 
 - The model au to generate filter base on query
 
-![image.png](assets/image_3.png)
+![image.png](image%203.png)
 
 - Retrieved node have metadata followed the filter
 
-![image.png](assets/image_4.png)
+![image.png](image%204.png)
 
-**Demo chatbot with 3 questions** (File `notebooks/demo_chatbot_simple.ipynb`)
+**Demo chatbot with 3 questions** (File `demo_chatbot_simple.ipynb`)
 
-![image.png](assets/image_5.png)
+![image.png](image%205.png)
 
-**Debugging and tracing** (File `notebooks/demo_chatbot_logging.ipynb`)
+**Debugging and tracing** (File `demo_chatbot_logging.ipynb`)
 
-![image.png](assets/image_6.png)
+![image.png](image%206.png)
 
-**Compare rag technique used in this pipeline:** File `notebooks/rag_develop_pipelines.ipynb`
+**Compare rag technique used in this pipeline:** File `rag_develop_pipelines.ipynb`
 
 ### 3. Further Improvement
 
@@ -43,11 +42,11 @@
 
 - Time based extraction
 
-![image.png](assets/image_7.png)
+![image.png](image%207.png)
 
 - Shot based extraction
 
-![image.png](assets/image_8.png)
+![image.png](image%208.png)
 
 **Better audio transcript segment strategy:** 
 
